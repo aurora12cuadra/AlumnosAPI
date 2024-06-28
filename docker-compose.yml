@@ -1,0 +1,12 @@
+services:
+  app:
+    image: practica_alumnos:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://aws-0-us-west-1.pooler.supabase.com:6543/postgres?user=postgres.bsgbznkyzmvewwmobhcg&password=AJHTpT3ZWkNEH3aF
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: AJHTpT3ZWkNEH3aF
