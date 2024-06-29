@@ -1,0 +1,28 @@
+<div class="col-12">
+    <div class="card">
+        <div class="grid">
+            <div class="col-12 md:col-12">
+                <div class="card p-fluid">
+                    <h1>Datos del Alumno</h1>
+                    <div class="field">
+                        <label htmlFor="nombre">Nombre</label>
+                        <input pInputText type="text" [(ngModel)]="alumno.nombre" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="paterno">Paterno</label>
+                        <input pInputText type="text" [(ngModel)]="alumno.paterno" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="materno">Materno</label>
+                        <input pInputText type="text" [(ngModel)]="alumno.materno" />
+                    </div>
+                    <div class="field">
+                        <label htmlFor="email">Email</label>
+                        <input pInputText type="text" [(ngModel)]="alumno.email" />
+                    </div>
+                    <button pButton label="Enviar" (click)="onSubmit()"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

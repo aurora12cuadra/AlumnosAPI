@@ -1,0 +1,67 @@
+<div class="grid">
+  <div class="col-12">
+      <div class="card border-primary">
+          <h1 class="card-title text-center text-primary">{{titulo}}</h1>
+          <p-table 
+              *ngIf="losAlumnos.length > 0"
+              [value]="losAlumnos"
+              [paginator]="true"
+              [rows]="5"
+              [rowsPerPageOptions]="[5,10,20]"
+          >
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th>Id</th>
+                      <th>Nombre</th>
+                      <th>Paterno</th>
+                      <th>Materno</th>
+                      <th>Email</th>
+                      <th>Acciones</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-alumno>
+                  <tr>
+                      <td>{{alumno.id}}</td>
+                      <td>{{alumno.nombre}}</td>
+                      <td>{{alumno.paterno}}</td>
+                      <td>{{alumno.materno}}</td>
+                      <td>{{alumno.email}}</td>
+                      <td>
+                          <button type="button" class="btn btn-outline-success btn-sm" (click)="openUpdateModal(alumno)">
+                              Actualizar
+                          </button>
+                          <button class="btn btn-outline-danger btn-sm" type="button" (click)="Eliminar(alumno.id)">
+                              Eliminar
+                          </button>
+                      </td>
+                  </tr>
+              </ng-template>
+          </p-table>
+          <div *ngIf="losAlumnos.length === 0" class="card">No hay nada que mostrar.</div>
+      </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<p-dialog header="Actualizar Alumno" [(visible)]="displayUpdateModal" [modal]="true" [closable]="false">
+  <div class="field">
+      <label htmlFor="nombre">Nombre</label>
+      <input pInputText type="text" [(ngModel)]="selectedAlumno.nombre" />
+  </div>
+  <div class="field">
+      <label htmlFor="paterno">Paterno</label>
+      <input pInputText type="text" [(ngModel)]="selectedAlumno.paterno" />
+  </div>
+  <div class="field">
+      <label htmlFor="materno">Materno</label>
+      <input pInputText type="text" [(ngModel)]="selectedAlumno.materno" />
+  </div>
+  <div class="field">
+      <label htmlFor="email">Email</label>
+      <input pInputText type="text" [(ngModel)]="selectedAlumno.email" />
+  </div>
+  <p-footer>
+      <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="cancelUpdate()"></button>
+      <button pButton type="button" label="Guardar" icon="pi pi-check" (click)="confirmUpdate()"></button>
+  </p-footer>
+</p-dialog>
